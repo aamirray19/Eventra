@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Outside Lovable's sandbox (e.g. Vercel's own build), nitro is off by
+  // default and produces a Vite-only build with no server bundling. Force it
+  // on and pin the target so `vercel build` emits a proper serverless output.
+  nitro: { preset: "vercel" },
 });
